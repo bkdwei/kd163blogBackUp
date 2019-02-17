@@ -70,7 +70,7 @@ class backup_mood(QThread):
         fileutil.check_and_create(self.backup_dir + self.mood_file)
         with open(self.backup_dir + self.mood_file, "w+") as f:
             f.write(r.text)
-            self.show_status_signal.emit("下载心情随笔的原始数据成功")
+            self.show_status_signal.emit("下载心情随笔的原始数据成功\n开始解析原始数据")
 
     # ~ 解析下载下来的数据并生成html文件
     def convert_to_html_file(self):

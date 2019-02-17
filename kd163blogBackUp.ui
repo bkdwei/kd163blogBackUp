@@ -46,6 +46,16 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QCheckBox" name="chkB_continue_on_failure">
+       <property name="text">
+        <string>断点续传</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -72,23 +82,20 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pb_backup_friendlist">
+      <widget class="QPushButton" name="pb_open_blog">
        <property name="text">
-        <string>备份博友</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pb_backup_musiclist">
-       <property name="text">
-        <string>备份音乐目录</string>
+        <string>打开博客</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QTextBrowser" name="tb_result"/>
+    <widget class="QTextBrowser" name="tb_result">
+     <property name="openExternalLinks">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

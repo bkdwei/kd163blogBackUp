@@ -13,4 +13,4 @@ python3 kd163blogBackUp.py
 - python3
 
 # 截图
-![kd163blogBackUp_screenshot](https://github.com/bkdwei/kdssh/blob/master/doc/kd163blogBackUp_screenshot.jpg "截图")
+![kd163blogBackUp_screenshot](https://github.com/bkdwei/kd163blogBackUp/blob/master/doc/kd163blogBackUp_screenshot.jpg "截图")
