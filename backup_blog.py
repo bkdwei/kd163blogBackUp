@@ -5,6 +5,7 @@ import fileutil
 import re
 import time
 import json
+import sys
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QInputDialog
 
