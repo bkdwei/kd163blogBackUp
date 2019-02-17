@@ -22,6 +22,13 @@ def check_and_create(absolute_file_path):
         with open(absolute_file_path, "w+") as f:
             pass
 
+def check_and_create_dir(absolute_dir_path):
+    if os.path.exists(absolute_dir_path) is not True:
+        os.makedirs(absolute_dir_path)
+    elif os.path.isdir(absolute_dir_path) is not True:
+        print(absolute_dir_path, "is no a dir,delete and create a dir")
+        os.remove(absolute_dir_path)
+        os.makedirs(absolute_dir_path)
 
 if __name__ == "__main__":
     a = "./u/y/p.jpg"

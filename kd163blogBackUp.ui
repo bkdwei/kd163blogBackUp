@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
+    <width>507</width>
     <height>300</height>
    </rect>
   </property>
@@ -58,7 +58,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="p_backup_blog">
+      <widget class="QPushButton" name="pb_backup_blog">
        <property name="text">
         <string>备份日志</string>
        </property>
