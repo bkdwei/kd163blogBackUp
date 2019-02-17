@@ -1,1 +1,0 @@
-<html><meta charset='utf-8'><body><h1>引用 【转载】遍历文件夹并将目标文件夹中没有的文件复制过去</h1><div class='tag'>2015-02-16 21:22:41 | 分类:  转载</div><hr><div class="bct fc05 fc11 nbw-blog ztag">for /f "delims=" %%i in ('dir $(SourceDir) /b') do ( if not exist $(TargetDir)\%%i copy $(SourceDir)\%%i $(TargetDir)\%%i )</div><br>阅读(184) |  评论(0)</body></html>
