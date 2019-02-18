@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import QInputDialog
 from kdconfig import sshconfig
 from backup_mood import backup_mood
 from backup_blog import backup_blog
+from backup_album import backup_album
 import fileutil
 
 
@@ -74,8 +75,9 @@ class kd163blogBackUp(QWidget):
         self.backup_blog_thread.start()
 
     def add_show_info(self, msg):
-        show_info = self.tb_result.toPlainText() + msg + "\n"
-        self.tb_result.setText(show_info)
+        # ~ show_info = self.tb_result.toPlainText() + msg + "\n"
+        self.tb_result.append(msg +"\n")
+        self.tb_result.moveCursor(self.tb_result.textCursor().End)
 
     def get_user_id(self):
         if self.user_id is not None:
@@ -90,6 +92,19 @@ class kd163blogBackUp(QWidget):
             print("您的用户id是", user_id)
             self.add_show_info("您的用户id是" + user_id)
             self.user_id = user_id
+
+    @pyqtSlot()
+    def on_pb_backup_album_clicked(self):
+        self.create_dir()
+        blog_name = self.le_blog_name.text()
+
+        # ~ 启动下载线程
+        self.backup_album_thread = backup_album(
+            self.backup_dir,
+            self.le_blog_name.text()
+        )
+        self.backup_album_thread.show_status_signal.connect(self.add_show_info)
+        self.backup_album_thread.start()
 
     @pyqtSlot()
     def on_pb_open_blog_clicked(self):
