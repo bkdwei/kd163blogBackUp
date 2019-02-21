@@ -1,4 +1,5 @@
-# coding: utf-8
+#!/usr/bin/env  python3
+#-*- coding:utf-8 -*-
 
 import os
 import sys
@@ -22,10 +23,6 @@ class kd163blogBackUp(QWidget):
         super().__init__()
         loadUi("kd163blogBackUp.ui", self)
         self.user_id = None
-        # ~ r = requests.get("http://qiyt72.blog.163.com/blog/static/1620782201711149821617/")
-        # ~ print(r.text)
-        # ~ with open("gg.html","w+") as a:
-        # ~ a.write(r.text)
 
     # ~ 生成个人的备份目录
     def create_dir(self):
@@ -38,7 +35,7 @@ class kd163blogBackUp(QWidget):
         if ok:
             mood_count = num
         else:
-            mood_count = 1
+            return
 
         self.create_dir()
         blog_name = self.le_blog_name.text()
@@ -55,9 +52,9 @@ class kd163blogBackUp(QWidget):
     def on_pb_backup_blog_clicked(self):
         num, ok = QInputDialog.getInt(None, "日志的数量", "请输入要备份的数量")
         if ok:
-            mood_count = num
+            blog_count = num
         else:
-            mood_count = 1
+            blog_count = 1
 
         self.create_dir()
         blog_name = self.le_blog_name.text()
@@ -68,7 +65,7 @@ class kd163blogBackUp(QWidget):
             self.backup_dir,
             self.le_blog_name.text(),
             self.user_id,
-            mood_count,
+            blog_count,
             self.chkB_continue_on_failure.isChecked(),
         )
         self.backup_blog_thread.show_status_signal.connect(self.add_show_info)

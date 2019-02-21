@@ -16,7 +16,7 @@ class backup_blog(QThread):
 
     show_status_signal = pyqtSignal(str)
 
-    def __init__(self, backup_dir, blog_name, user_id, mood_count, continue_on_failure):
+    def __init__(self, backup_dir, blog_name, user_id, blog_count, continue_on_failure):
         super().__init__()
         self.blog_source_file = "日志/source_blog.txt"
         self.blog_html_file = "日志/blog.html"
@@ -24,7 +24,7 @@ class backup_blog(QThread):
         self.backup_dir = backup_dir
         self.blog_name = blog_name
         self.user_id = user_id
-        self.mood_count = mood_count
+        self.blog_count = blog_count
         self.continue_on_failure = continue_on_failure
         self.continue_index = 0
         if continue_on_failure :
@@ -66,13 +66,13 @@ class backup_blog(QThread):
             self.show_status_signal.emit("系统异常:" + str(sys.exc_info()[1]) + "\n下载失败")
 
     def down_blog_source(self):
-        self.show_status_signal.emit("开始下载{}条日志".format(self.mood_count))
+        self.show_status_signal.emit("开始下载{}条日志".format(self.blog_count))
 
         get_blog_url = "http://api.blog.163.com/{}/dwr/call/plaincall/BlogBeanNew.getBlogsNewTheme.dwr".format(
             self.blog_name
         )
         self.post_blog_data["c0-param0"] = self.user_id
-        self.post_blog_data["c0-param2"] = self.mood_count
+        self.post_blog_data["c0-param2"] = self.blog_count
 
         fileutil.check_and_create(self.backup_dir + self.blog_source_file)
         print(
